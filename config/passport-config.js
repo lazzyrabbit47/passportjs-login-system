@@ -17,8 +17,11 @@ passport.deserializeUser((id, done) => {
     })
 })
 
-passport.use(new Strategy(
-    ((email, password, done) => {
+passport.use(new Strategy({
+    usernameField: 'email',
+    passwordField: 'password'
+},
+    function (email, password, done)  {
         User.findOne({
             email: email,
         })
@@ -35,5 +38,5 @@ passport.use(new Strategy(
             console.log('passport-config error: ' + err)
         })
         ;
-    }),
+    },
 ));

@@ -32,7 +32,7 @@ router.post('/register', async (req, res) => {
         await newUser.setPassword(password);
 
         const user = await newUser.save();
-        // await promisify(passport.authenticate('local'))(req, res);
+        await promisify(passport.authenticate('local'))(req, res);
         console.log(user)
         res.json(user)
         console.log('new User added')

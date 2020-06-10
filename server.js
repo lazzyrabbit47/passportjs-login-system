@@ -7,7 +7,6 @@ const mongoose = require('mongoose');
 const logger = require('morgan');
 const passport = require('passport');
 const cors = require('cors');
-const { Strategy } = require('passport-local');
 const flash = require('flash');
 const cookieSession = require('cookie-session');
 const authRouter = require('./routes/auth');
@@ -32,7 +31,6 @@ mongoose.connect(process.env.DB_URL, {
 }).catch(err => {
     console.log('Something went wrong: ' + err)
 })
-require('./models/user');
 
 
 require('./config/passport-config');

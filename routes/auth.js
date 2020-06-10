@@ -25,8 +25,7 @@ async function login(req, user) {
 }
 
 loginRouter.post('/', (req, res, next) => {     
-    passport.authenticate('local', async(err, user) => {
-        console.log(user)
+    passport.authenticate('local', async(err, user, info) => {
         if (err) {
             console.log('error')
             res.json(err);
@@ -42,6 +41,11 @@ loginRouter.post('/', (req, res, next) => {
         
     })(req, res, next);
 });
+
+// loginRouter.post('/', passport.authenticate('local'), function(req, res) {
+//     console.log(req.user)
+//     res.json(user)
+// })
 
 router.use('/login', loginRouter);
 
